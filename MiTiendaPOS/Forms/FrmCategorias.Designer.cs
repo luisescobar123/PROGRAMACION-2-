@@ -44,17 +44,18 @@
             // lblFiltro
             // 
             lblFiltro.AutoSize = true;
-            lblFiltro.Location = new Point(15, 26);
+            lblFiltro.Location = new Point(17, 35);
             lblFiltro.Name = "lblFiltro";
-            lblFiltro.Size = new Size(46, 15);
+            lblFiltro.Size = new Size(57, 20);
             lblFiltro.TabIndex = 0;
             lblFiltro.Text = "BUscar:";
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(82, 23);
+            txtBuscar.Location = new Point(94, 31);
+            txtBuscar.Margin = new Padding(3, 4, 3, 4);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(246, 23);
+            txtBuscar.Size = new Size(281, 27);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
@@ -64,13 +65,15 @@
             dgvCategorias.AllowUserToDeleteRows = false;
             dgvCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategorias.Location = new Point(27, 72);
+            dgvCategorias.Location = new Point(31, 96);
+            dgvCategorias.Margin = new Padding(3, 4, 3, 4);
             dgvCategorias.MultiSelect = false;
             dgvCategorias.Name = "dgvCategorias";
             dgvCategorias.ReadOnly = true;
             dgvCategorias.RowHeadersVisible = false;
+            dgvCategorias.RowHeadersWidth = 51;
             dgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategorias.Size = new Size(301, 224);
+            dgvCategorias.Size = new Size(344, 299);
             dgvCategorias.TabIndex = 2;
             dgvCategorias.CellClick += dgvCategorias_CellClick;
             // 
@@ -78,34 +81,38 @@
             // 
             grpDatos.Controls.Add(txtNombre);
             grpDatos.Controls.Add(lblNombre);
-            grpDatos.Location = new Point(356, 74);
+            grpDatos.Location = new Point(407, 99);
+            grpDatos.Margin = new Padding(3, 4, 3, 4);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(218, 93);
+            grpDatos.Padding = new Padding(3, 4, 3, 4);
+            grpDatos.Size = new Size(249, 124);
             grpDatos.TabIndex = 3;
             grpDatos.TabStop = false;
             grpDatos.Text = "Datos de la Categoría";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(12, 55);
+            txtNombre.Location = new Point(14, 73);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(176, 23);
+            txtNombre.Size = new Size(201, 27);
             txtNombre.TabIndex = 4;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(12, 28);
+            lblNombre.Location = new Point(14, 37);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(54, 15);
+            lblNombre.Size = new Size(67, 20);
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre:";
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(376, 173);
+            btnNuevo.Location = new Point(430, 231);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(168, 36);
+            btnNuevo.Size = new Size(192, 48);
             btnNuevo.TabIndex = 4;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -113,9 +120,10 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(376, 215);
+            btnGuardar.Location = new Point(430, 287);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(168, 36);
+            btnGuardar.Size = new Size(192, 48);
             btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -123,18 +131,20 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(376, 257);
+            btnEliminar.Location = new Point(430, 343);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(168, 39);
+            btnEliminar.Size = new Size(192, 52);
             btnEliminar.TabIndex = 6;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // FrmCategorias
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(595, 321);
+            ClientSize = new Size(680, 428);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
             Controls.Add(btnNuevo);
@@ -143,6 +153,7 @@
             Controls.Add(txtBuscar);
             Controls.Add(lblFiltro);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCategorias";

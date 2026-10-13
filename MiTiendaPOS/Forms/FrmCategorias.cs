@@ -1,13 +1,8 @@
 ﻿using MiTiendaPOS.Models;
 using MiTiendaPOS.Services;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MiTiendaPOS.Forms
@@ -15,7 +10,8 @@ namespace MiTiendaPOS.Forms
     public partial class FrmCategorias : Form
     {
         private readonly CategoriaService _servicio = new();
-        private int _idSeleccionado = 0;//para registro nuevo
+        private int _idSeleccionado = 0; // para registro nuevo
+
         public FrmCategorias()
         {
             InitializeComponent();
@@ -33,6 +29,7 @@ namespace MiTiendaPOS.Forms
                 .Select(c => new { c.Id, c.Nombre })
                 .ToList();
         }
+
         private void LimpiarFormulario()
         {
             _idSeleccionado = 0;
@@ -59,7 +56,6 @@ namespace MiTiendaPOS.Forms
             _idSeleccionado = categoria.Id;
             txtNombre.Text = categoria.Nombre;
             btnEliminar.Enabled = true;
-
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -76,23 +72,48 @@ namespace MiTiendaPOS.Forms
                     Id = _idSeleccionado,
                     Nombre = txtNombre.Text
                 };
+
                 if (_idSeleccionado == 0)
                     _servicio.Crear(categoria);
-                        
                 else
                     _servicio.Actualizar(categoria);
-                MessageBox.Show("Categoria guardada cone exito,", "MiTIendaPOS",
+
+                MessageBox.Show("Categoría guardada con éxito.", "MiTiendaPOS",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarCategorias();
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "No se pudo guardar",
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CargarCategorias();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (_idSeleccionado == 0) return;
+            var resultado = MessageBox.Show(
+                "¿Está seguro de eliminar la categoría seleccionada?",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    _servicio.Eliminar(_idSeleccionado);
+                    MessageBox.Show("Categoría eliminada correctamente.", "MiTiendaPOS",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarCategorias();
+                    LimpiarFormulario();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "No se pudo eliminar",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
     }
 }
+
